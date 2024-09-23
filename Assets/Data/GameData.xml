@@ -1,0 +1,37 @@
+<gameData>
+  <companyName>AdVenture Copytalist</companyName>
+  <startingBalance>2.5</startingBalance>
+  <store>
+    <name>Lemonade Stand</name>
+    <image>Lemonade_stand</image>
+    <baseStoreCost>1.0</baseStoreCost>
+    <baseStoreProfit>0.5</baseStoreProfit>
+    <storeTimer>5</storeTimer>
+    <storeCount>1</storeCount>
+    <storeMultiplier>1.1</storeMultiplier>
+    <storeTimerDivision>20</storeTimerDivision>
+    <managerCost>75</managerCost>
+  </store>
+  <store>
+    <name>Newspaper Delivery</name>
+    <image>Newspaper_Delivery</image>
+    <baseStoreCost>7.0</baseStoreCost>
+    <baseStoreProfit>1.0</baseStoreProfit>
+    <storeTimer>12</storeTimer>
+    <storeCount>0</storeCount>
+    <storeMultiplier>1.2</storeMultiplier>
+    <storeTimerDivision>25</storeTimerDivision>
+    <managerCost>500</managerCost>
+  </store>
+  <store>
+    <name>Car Wash</name>
+    <image>Car_Wash</image>
+    <baseStoreCost>300.0</baseStoreCost>
+    <baseStoreProfit>12.0</baseStoreProfit>
+    <storeTimer>55</storeTimer>
+    <storeCount>0</storeCount>
+    <storeMultiplier>1.2</storeMultiplier>
+    <storeTimerDivision>30</storeTimerDivision>
+    <managerCost>2500</managerCost>
+  </store>
+</gameData>
