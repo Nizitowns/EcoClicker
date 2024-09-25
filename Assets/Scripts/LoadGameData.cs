@@ -11,6 +11,7 @@ public class LoadGameData : MonoBehaviour
     [SerializeField] TextAsset gameData;
     [SerializeField] GameObject storePrefab;
     [SerializeField] GameObject storePanel;
+
     [SerializeField] GameObject managerPrefab;
     [SerializeField] GameObject managerPanel;
 
@@ -74,6 +75,7 @@ public class LoadGameData : MonoBehaviour
         {
             TMP_Text storeText = newStore.transform.Find("Store Name Text (TMP)").GetComponent<TMP_Text>(); // To Refactor Move to UIStore
             storeText.text = storeNode.InnerText;
+            storeObject.storeName = storeNode.InnerText;
         }
         if (storeNode.Name == "image")
         {
@@ -108,12 +110,26 @@ public class LoadGameData : MonoBehaviour
         }
         if (storeNode.Name == "managerCost")
         {
-            CreateManager();
+            CreateManager(storeNode, storeObject);
         }
     }
 
-    private void CreateManager()
+    private void CreateManager(XmlNode storeNode, Store storeObject)
     {
         GameObject newManager = (GameObject)Instantiate(managerPrefab);
+        newManager.transform.SetParent(managerPanel.transform);
+
+        TMP_Text managerNameText = newManager.transform.Find("Manager Name Text (TMP)").GetComponent<TMP_Text>(); // To Refactor Move to UIStore
+        managerNameText.text = storeObject.storeName;
+
+        storeObject.managerCost = float.Parse(storeNode.InnerText);
+        Button managerButton = newManager.transform.Find("Unlock Manager Button").GetComponent<Button>();
+        TMP_Text buttonText = managerButton.transform.Find("Unlock Manager Button Text (TMP)").GetComponent<TMP_Text>(); // To Refactor Move to UIStore
+        buttonText.text = "Unlock " + storeObject.managerCost.ToString("C2");
+
+        UIStore UIManager = storeObject.GetComponent<UIStore>();
+        UIManager.managerButton = managerButton;
+
+        managerButton.onClick.AddListener(storeObject.UnlockManager);
     }
 }

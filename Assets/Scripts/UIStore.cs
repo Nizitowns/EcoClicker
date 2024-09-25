@@ -10,6 +10,7 @@ public class UIStore : MonoBehaviour
     [SerializeField] Button buyButton;
 
     public Store myStore;
+    public Button managerButton;
 
     private void Awake()
     {
@@ -37,8 +38,38 @@ public class UIStore : MonoBehaviour
     private void OnDisable()
     {
         GameManager.OnUpdateBalance -= UpdateUI;
+        LoadGameData.OnLoadDataComplete += UpdateUI;
     }
 
+    public void ManagerUnlocked()
+    {
+        if (managerButton == null)
+        {
+            Debug.LogError("managerButton is not assigned or is null!");
+            return;
+        }
+
+        // Find the "Unlock Manager Button Text (TMP)" child object
+        var textTransform = managerButton.transform.Find("Unlock Manager Button Text (TMP)");
+        if (textTransform == null)
+        {
+            Debug.LogError("'Unlock Manager Button Text (TMP)' not found on managerButton.");
+            return;
+        }
+
+        // Get the TMP_Text component and update the button text
+        TMP_Text buttonText = textTransform.GetComponent<TMP_Text>();
+        if (buttonText == null)
+        {
+            Debug.LogError("TMP_Text component not found on 'Unlock Manager Button Text (TMP)'.");
+            return;
+        }
+
+        buttonText.text = "PURCHASED";
+
+        //TMP_Text buttonText = managerButton.transform.Find("Unlock Manager Button Text(TMP)").GetComponent<TMP_Text>();
+        //buttonText.text = "PURCHASED";
+    }
 
     public void UpdateUI()
     {
@@ -67,6 +98,17 @@ public class UIStore : MonoBehaviour
         }
 
         buyButtonText.text = "Buy " + myStore.GetNextStoreCost().ToString("C2");
+
+        // Update manager button if store can be afforded
+        if (!myStore.managerUnlocked && GameManager.Instance.CanBuy(myStore.managerCost))
+        {
+            managerButton.interactable = true;
+        }
+        else
+        {
+            managerButton.interactable = false;
+        }
+
     }
 
     public void BuyStoreOnClick()

@@ -10,7 +10,8 @@
     <storeCount>1</storeCount>
     <storeMultiplier>1.1</storeMultiplier>
     <storeTimerDivision>20</storeTimerDivision>
-    <managerCost>75</managerCost>
+    <managerName>Bob Smith</managerName>
+    <managerCost>2</managerCost>
   </store>
   <store>
     <name>Newspaper Delivery</name>
@@ -21,7 +22,8 @@
     <storeCount>0</storeCount>
     <storeMultiplier>1.2</storeMultiplier>
     <storeTimerDivision>25</storeTimerDivision>
-    <managerCost>500</managerCost>
+    <managerName>Linda Shrine</managerName>
+    <managerCost>4</managerCost>
   </store>
   <store>
     <name>Car Wash</name>
@@ -32,6 +34,7 @@
     <storeCount>0</storeCount>
     <storeMultiplier>1.2</storeMultiplier>
     <storeTimerDivision>30</storeTimerDivision>
+    <managerName>Jane Doe</managerName>
     <managerCost>2500</managerCost>
   </store>
 </gameData>
