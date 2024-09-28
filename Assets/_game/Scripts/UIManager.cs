@@ -1,3 +1,5 @@
+using _game.Scripts;
+using _game.Scripts.Managers;
 using TMPro;
 using UnityEngine;
 
@@ -30,19 +32,19 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnUpdateBalance += UpdateUI;
-        LoadGameData.OnLoadDataComplete += UpdateUI;
+        InitGameData.OnLoadDataComplete += UpdateUI;
     }
 
     private void OnDisable()
     {
         GameManager.OnUpdateBalance -= UpdateUI;
-        LoadGameData.OnLoadDataComplete -= UpdateUI;
+        InitGameData.OnLoadDataComplete -= UpdateUI;
     }
 
     public void UpdateUI()
     {
         currentBalanceText.text = GameManager.Instance.GetCurrentBalance().ToString("C2");
-        companyNameText.text = GameManager.Instance.companyName;
+        companyNameText.text = GameManager.Instance.CompanyName;
     }
 
     void OnShowManagers()

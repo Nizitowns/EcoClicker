@@ -1,3 +1,5 @@
+using _game.Scripts;
+using _game.Scripts.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,13 +34,13 @@ public class UIStore : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnUpdateBalance += UpdateUI;
-        LoadGameData.OnLoadDataComplete += UpdateUI;
+        InitGameData.OnLoadDataComplete += UpdateUI;
     }
 
     private void OnDisable()
     {
         GameManager.OnUpdateBalance -= UpdateUI;
-        LoadGameData.OnLoadDataComplete += UpdateUI;
+        InitGameData.OnLoadDataComplete += UpdateUI;
     }
 
     public void ManagerUnlocked()
@@ -75,16 +77,23 @@ public class UIStore : MonoBehaviour
     {
         // Hide panel until you can afford the store
         CanvasGroup myCanvasGroup = this.transform.GetComponent<CanvasGroup>();
+        
+        
+        
         if (!myStore.storeUnlocked && !GameManager.Instance.CanBuy(myStore.GetNextStoreCost()))
         {
+            Debug.Log($"Locked: {myStore.name} : {myStore.storeName}");
             myCanvasGroup.interactable = false;
             myCanvasGroup.alpha = 0;
         }
         else
         {
-            myCanvasGroup.interactable = true;
-            myCanvasGroup.alpha = 1;
-            myStore.storeUnlocked = true;
+            if(!myStore.storeUnlocked){
+                Debug.Log($"Unlocking: {myStore.name} : {myStore.storeName}");
+                myCanvasGroup.interactable = true;
+                myCanvasGroup.alpha = 1;
+                myStore.storeUnlocked = true;
+            }
         }
 
         // update button if you can afford the store

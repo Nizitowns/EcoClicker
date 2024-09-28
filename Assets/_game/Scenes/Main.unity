@@ -603,7 +603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9db7fdf9794984e96b2cdce4c4b9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  companyName: 
 --- !u!4 &409346995
 Transform:
   m_ObjectHideFlags: 0
@@ -647,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644e447280ead6442bf3d8a3fc04cde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 4900000, guid: 3487aab228e0a43458aa589c923988df, type: 3}
+  gameData: {fileID: 11400000, guid: 1aa6386f2b7b4bd4c8f60b7b1081acca, type: 2}
   storePrefab: {fileID: 8694661147510574596, guid: 2a655424efe363547bc973861c82796c, type: 3}
   storePanel: {fileID: 1360251111}
   managerPrefab: {fileID: 5660179363914460746, guid: 8a38aa5884145d74391cc87dda506cfe, type: 3}
@@ -1054,7 +1053,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1142,8 +1141,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 600, y: 300}
-  m_Spacing: {x: 50, y: 50}
+  m_CellSize: {x: 600, y: 250}
+  m_Spacing: {x: 50, y: 250}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &915459947
@@ -1863,7 +1862,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
