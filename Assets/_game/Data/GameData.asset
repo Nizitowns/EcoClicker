@@ -17,4 +17,5 @@ MonoBehaviour:
   <Stores>k__BackingField:
   - {fileID: 11400000, guid: aaf8c6b3a5bf27047bd849d2045f72e0, type: 2}
   - {fileID: 11400000, guid: 75d5781d794416740bbc954883dca631, type: 2}
+  - {fileID: 11400000, guid: e47cab35d6746464c8bc91e7a110ee93, type: 2}
   - {fileID: 11400000, guid: e4501c1642767e04f8e3a45031b52d08, type: 2}

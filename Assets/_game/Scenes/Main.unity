@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: 1aa6386f2b7b4bd4c8f60b7b1081acca, type: 2}
-  storePrefab: {fileID: 8694661147510574596, guid: 2a655424efe363547bc973861c82796c, type: 3}
+  storePrefab: {fileID: 1057640881646596761, guid: 2a655424efe363547bc973861c82796c, type: 3}
   storePanel: {fileID: 1360251111}
   managerPrefab: {fileID: 5660179363914460746, guid: 8a38aa5884145d74391cc87dda506cfe, type: 3}
   managerPanel: {fileID: 915459944}

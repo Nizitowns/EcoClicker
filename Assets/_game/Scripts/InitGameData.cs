@@ -13,7 +13,7 @@ namespace _game.Scripts
         public static event Action OnLoadDataComplete;
 
         [SerializeField] GameData.GameData gameData;
-        [SerializeField] GameObject storePrefab;
+        [SerializeField] Store storePrefab;
         [SerializeField] GameObject storePanel;
 
         [SerializeField] GameObject managerPrefab;
@@ -40,6 +40,7 @@ namespace _game.Scripts
 
         private void InitStores()
         {
+            
             foreach (var store in gameData.Stores)
             {
                 CreateNewStore(store);
@@ -48,17 +49,16 @@ namespace _game.Scripts
     
         private void CreateNewStore(StoreData store)
         {
-            GameObject newStore = (GameObject)Instantiate(storePrefab);
-            newStore.name = store.StoreName;
-            Store storeObject = newStore.GetComponent<Store>();
+            Store storeObject = Instantiate<Store>(storePrefab, storePanel.transform, false);
+            storeObject.name = store.StoreName;
+            
 
-            SetStoreObject(newStore, storeObject, store);
+            SetStoreObject( storeObject, store);
 
             storeObject.SetNextStoreCost(storeObject.baseStoreCost);
-            newStore.transform.SetParent(storePanel.transform);
         }
     
-        private void SetStoreObject(GameObject newStore, Store storeObject, StoreData store)
+        private void SetStoreObject( Store storeObject, StoreData store)
         {
             storeObject.SetStoreName(store.StoreName);
 
@@ -77,8 +77,7 @@ namespace _game.Scripts
     
         private void CreateManager(string managerName, Store storeObject, StoreData store)
         {
-            GameObject newManager = (GameObject)Instantiate(managerPrefab);
-            newManager.transform.SetParent(managerPanel.transform);
+            GameObject newManager = (GameObject)Instantiate(managerPrefab, managerPanel.transform, false);
 
             TMP_Text managerNameText = newManager.transform.Find("Manager Name Text (TMP)").GetComponent<TMP_Text>();
             managerNameText.text = managerName;
