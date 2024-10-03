@@ -22,14 +22,15 @@ namespace _game.Scripts
 
         public void Start()
         {
-            LoadData();
-            OnLoadDataComplete?.Invoke();
+            InitializeGameData();
         }
 
-        public void LoadData()
+        private void InitializeGameData()
         {
             LoadGameManagerData();
             InitStores();
+            Debug.Log("Loading stores complete");
+            OnLoadDataComplete?.Invoke();
         }
 
         private void LoadGameManagerData()

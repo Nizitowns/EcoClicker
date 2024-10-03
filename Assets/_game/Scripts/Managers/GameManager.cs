@@ -41,9 +41,12 @@ namespace _game.Scripts.Managers
 
         public float GetCurrentBalance() => _currentBalance;
         
-        public void SetCompanyName(string companyName)
+        public void SetCompanyName(string companyName) => CompanyName = companyName;
+
+        public void SetBalance(float gameDataStartingBalance)
         {
-            CompanyName = companyName;
+            _currentBalance = gameDataStartingBalance;
+            OnUpdateBalance?.Invoke();
         }
     }
 }
