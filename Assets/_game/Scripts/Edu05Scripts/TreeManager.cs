@@ -16,6 +16,7 @@ public class TreeManager : MonoBehaviour
 
     void Start()
     {
+        treeState = TreeState.Seed;
         timer = countdownTimer;
         actualScale = new Vector3(8.0f, 8.0f, 8.0f); //this will be remove in future, is just for all trees have same scale
         transform.localScale = new Vector3();
