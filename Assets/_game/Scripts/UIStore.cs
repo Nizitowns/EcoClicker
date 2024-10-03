@@ -27,13 +27,25 @@ public class UIStore : MonoBehaviour
     void Start()
     {
         storeCountText.text = myStore.GetStoreCount().ToString();
-        Invoke(nameof(UnlockStore), 1f);
+        Invoke(nameof(UnlockStore), 0.2f);  
     }
 
+    //TODO: Fix this hacky solution
     private void UnlockStore()
     {
-        if(!myStore.storeUnlocked)
+        if (myStore.storeCount > 0)
+        {
+            myStore.storeUnlocked = true;
+        }
+        
+        if (!myStore.storeUnlocked)
+        {
+            myCanvasGroup.interactable = false;
+            myCanvasGroup.alpha = 0;
+            Debug.Log($" {myStore.name} Store is not unlocked");
             return;
+        }
+        Debug.Log($" {myStore.name} Store is unlocked");
         myCanvasGroup.interactable = true;
         myCanvasGroup.alpha = 1;
     }

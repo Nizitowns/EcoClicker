@@ -29,7 +29,6 @@ namespace _game.Scripts
         {
             LoadGameManagerData();
             InitStores();
-            Debug.Log("Loading stores complete");
             OnLoadDataComplete?.Invoke();
         }
 
