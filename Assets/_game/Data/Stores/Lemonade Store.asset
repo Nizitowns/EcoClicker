@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StoreImage>k__BackingField: {fileID: 21300000, guid: bc186876c786317428a01fcaf63fceaf, type: 3}
   <StoreName>k__BackingField: Lemonade Stand
-  <BaseStoreCost>k__BackingField: 1
-  <BaseStoreProfit>k__BackingField: 0.5
-  <StoreTimer>k__BackingField: 5
+  <BaseStoreCost>k__BackingField: 3.738
+  <StoreMultiplier>k__BackingField: 1.07
+  <StoreTimer>k__BackingField: 0.6
+  <BaseStoreProfit>k__BackingField: 1
   <StoreCount>k__BackingField: 1
-  <StoreMultiplier>k__BackingField: 1.1
-  <StoreTimerDivision>k__BackingField: 20
+  <StoreTimerDivision>k__BackingField: 25
   <ManagerName>k__BackingField: Bob Smith
-  <ManagerCost>k__BackingField: 2
+  <ManagerCost>k__BackingField: 3.738

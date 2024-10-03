@@ -14,15 +14,40 @@ public class UIStore : MonoBehaviour
     public Store myStore;
     public Button managerButton;
 
+    private CanvasGroup myCanvasGroup;
+
     private void Awake()
     {
         myStore = GetComponent<Store>();
+        myCanvasGroup = this.transform.GetComponent<CanvasGroup>();
+        myStore.OnStoreUnlocked += UnlockStore;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         storeCountText.text = myStore.GetStoreCount().ToString();
+        Invoke(nameof(UnlockStore), 0.2f);  
+    }
+
+    //TODO: Fix this hacky solution
+    private void UnlockStore()
+    {
+        if (myStore.storeCount > 0)
+        {
+            myStore.storeUnlocked = true;
+        }
+        
+        if (!myStore.storeUnlocked)
+        {
+            myCanvasGroup.interactable = false;
+            myCanvasGroup.alpha = 0;
+            Debug.Log($" {myStore.name} Store is not unlocked");
+            return;
+        }
+        Debug.Log($" {myStore.name} Store is unlocked");
+        myCanvasGroup.interactable = true;
+        myCanvasGroup.alpha = 1;
     }
 
     // Update is called once per frame
@@ -75,21 +100,15 @@ public class UIStore : MonoBehaviour
 
     public void UpdateUI()
     {
-        // Hide panel until you can afford the store
-        CanvasGroup myCanvasGroup = this.transform.GetComponent<CanvasGroup>();
-        
-        
-        
+
         if (!myStore.storeUnlocked && !GameManager.Instance.CanBuy(myStore.GetNextStoreCost()))
         {
-            Debug.Log($"Locked: {myStore.name} : {myStore.storeName}");
             myCanvasGroup.interactable = false;
             myCanvasGroup.alpha = 0;
         }
         else
         {
             if(!myStore.storeUnlocked){
-                Debug.Log($"Unlocking: {myStore.name} : {myStore.storeName}");
                 myCanvasGroup.interactable = true;
                 myCanvasGroup.alpha = 1;
                 myStore.storeUnlocked = true;
