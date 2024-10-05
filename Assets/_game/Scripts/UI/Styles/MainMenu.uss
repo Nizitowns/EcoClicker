@@ -1,0 +1,74 @@
+.title-text {
+    -unity-text-align: upper-center;
+    font-size: 75px;
+    color: rgb(124, 90, 71);
+    text-overflow: ellipsis;
+    -unity-font-style: bold;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    letter-spacing: -10px;
+    text-shadow: 5px 5px 0 rgb(0, 0, 0);
+    margin-top: 50px;
+}
+
+.title-container {
+    flex-grow: 1;
+    align-items: center;
+}
+
+.button-container {
+    flex-grow: 1;
+    display: none;
+    width: 200px;
+    height: 200px;
+    margin-left: 100px;
+}
+
+.container {
+    flex-grow: 1;
+    flex-shrink: 0;
+    background-color: rgb(55, 55, 55);
+    background-image: url("project://database/Assets/_game/Textures/Horizontal%201%20-%20512x512.png?fileID=2800000&guid=d8169854ae28d4842865a191fabe45af&type=3#Horizontal 1 - 512x512");
+    -unity-background-image-tint-color: rgb(220, 247, 200);
+    background-size: 100% 175%;
+    background-position-x: center 0;
+    background-position-y: top 0;
+}
+
+.options-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.volume-slider {
+    width: 400px;
+}
+
+.generic-button {
+    width: 200px;
+    height: 80px;
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: rgb(124, 90, 71);
+    border-left-color: rgb(124, 90, 71);
+    border-right-color: rgb(124, 90, 71);
+    border-top-color: rgb(124, 90, 71);
+    border-bottom-color: rgb(124, 90, 71);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    -unity-font-style: bold;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.generic-button:hover {
+    background-color: rgb(191, 243, 142);
+}
