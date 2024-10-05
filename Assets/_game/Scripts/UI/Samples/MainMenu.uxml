@@ -1,0 +1,16 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_game/Scripts/UI/Styles/MainMenu.uss?fileID=7433441132597879392&amp;guid=fcd989b3374d7f845a047c36102c5a67&amp;type=3#MainMenu" />
+    <engine:VisualElement class="container" style="flex-grow: 1;">
+        <engine:VisualElement class="title-container" style="flex-grow: 1;">
+            <engine:Label text="Label" class="title-text" />
+        </engine:VisualElement>
+        <engine:VisualElement class="button-container" style="flex-grow: 1; display: flex;">
+            <engine:Button text="Start" class="generic-button" />
+            <engine:Button text="Options" class="generic-button" />
+        </engine:VisualElement>
+        <engine:VisualElement class="options-container" style="display: none;">
+            <engine:Slider label="Volume" value="42" high-value="100" class="volume-slider" />
+            <engine:Button text="Back" class="generic-button" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
