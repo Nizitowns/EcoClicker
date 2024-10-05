@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a598334870504fa389afeb0b9c04b823, type: 3}
-  m_Name: Shrimp Boat
+  m_Name: Seed #2
   m_EditorClassIdentifier: 
-  <StoreImage>k__BackingField: {fileID: 21300000, guid: f6cce249975b45a4e8a478c1c9ba1b50, type: 3}
-  <StoreName>k__BackingField: Shrimp Boat
-  <BaseStoreCost>k__BackingField: 1244160
-  <StoreMultiplier>k__BackingField: 1.11
-  <StoreTimer>k__BackingField: 96
-  <BaseStoreProfit>k__BackingField: 622080
+  <StoreImage>k__BackingField: {fileID: -1743080362, guid: 952e5a4a05b3f7c48ae9d4b5af37034a, type: 3}
+  <StoreName>k__BackingField: Seed #2
+  <BaseStoreCost>k__BackingField: 60
+  <StoreMultiplier>k__BackingField: 1.15
+  <StoreTimer>k__BackingField: 3
+  <BaseStoreProfit>k__BackingField: 60
   <StoreCount>k__BackingField: 0
   <StoreTimerDivision>k__BackingField: 25
   <ManagerName>k__BackingField: Linda Shrine
-  <ManagerCost>k__BackingField: 1244160
+  <ManagerCost>k__BackingField: 60

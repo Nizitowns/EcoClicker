@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a598334870504fa389afeb0b9c04b823, type: 3}
-  m_Name: Car Wash
+  m_Name: Seed #3
   m_EditorClassIdentifier: 
-  <StoreImage>k__BackingField: {fileID: 21300000, guid: 6c3035daa45ffba439150f3000d4251b, type: 3}
-  <StoreName>k__BackingField: Car Wash
+  <StoreImage>k__BackingField: {fileID: 795272704, guid: 99f99444d8722f04a92fbbd9fb9695d6, type: 3}
+  <StoreName>k__BackingField: Seed #3
   <BaseStoreCost>k__BackingField: 720
   <StoreMultiplier>k__BackingField: 1.14
   <StoreTimer>k__BackingField: 6

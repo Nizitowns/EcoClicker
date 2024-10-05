@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a598334870504fa389afeb0b9c04b823, type: 3}
-  m_Name: Movie Studio
+  m_Name: Tree #2
   m_EditorClassIdentifier: 
-  <StoreImage>k__BackingField: {fileID: 21300000, guid: ab30539cb2358084e9fc606a3987db37, type: 3}
-  <StoreName>k__BackingField: Movie Studio
-  <BaseStoreCost>k__BackingField: 179159000
-  <StoreMultiplier>k__BackingField: 1.09
-  <StoreTimer>k__BackingField: 1536
-  <BaseStoreProfit>k__BackingField: 89579520
+  <StoreImage>k__BackingField: {fileID: -403835984, guid: 995565de7dbfd124baf7a95dc4cf7af8, type: 3}
+  <StoreName>k__BackingField: Tree #2
+  <BaseStoreCost>k__BackingField: 1244160
+  <StoreMultiplier>k__BackingField: 1.11
+  <StoreTimer>k__BackingField: 96
+  <BaseStoreProfit>k__BackingField: 622080
   <StoreCount>k__BackingField: 0
   <StoreTimerDivision>k__BackingField: 25
   <ManagerName>k__BackingField: Linda Shrine
-  <ManagerCost>k__BackingField: 179159000
+  <ManagerCost>k__BackingField: 1244160

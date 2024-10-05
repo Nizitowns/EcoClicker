@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a598334870504fa389afeb0b9c04b823, type: 3}
-  m_Name: Lemonade Store
+  m_Name: Seed #1
   m_EditorClassIdentifier: 
-  <StoreImage>k__BackingField: {fileID: 21300000, guid: bc186876c786317428a01fcaf63fceaf, type: 3}
-  <StoreName>k__BackingField: Lemonade Stand
+  <StoreImage>k__BackingField: {fileID: 2050061905, guid: 09ca9b4c4fc31494b82057984c82fb52, type: 3}
+  <StoreName>k__BackingField: Seed #1
   <BaseStoreCost>k__BackingField: 3.738
   <StoreMultiplier>k__BackingField: 1.07
   <StoreTimer>k__BackingField: 0.6
