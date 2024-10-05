@@ -470,7 +470,7 @@ MonoBehaviour:
   uiDocument: {fileID: 1661306009}
   styleSheets:
   - {fileID: 7433441132597879392, guid: fcd989b3374d7f845a047c36102c5a67, type: 3}
-  sceneToLoad: Game
+  sceneToLoad: EcoClicker
   gameName: Eco Clicker
 --- !u!1 &1808813592
 GameObject:

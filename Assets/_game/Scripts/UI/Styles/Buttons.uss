@@ -1,0 +1,25 @@
+.rounded-square {
+    width: 75px;
+    height: 75px;
+    border-left-color: rgb(124, 90, 71);
+    border-right-color: rgb(124, 90, 71);
+    border-top-color: rgb(124, 90, 71);
+    border-bottom-color: rgb(124, 90, 71);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: rgb(217, 217, 217);
+}
+
+.rounded-square:hover {
+    background-color: rgb(173, 212, 137);
+}
+
+.upgrade-button {
+    background-color: rgb(114, 169, 62);
+}

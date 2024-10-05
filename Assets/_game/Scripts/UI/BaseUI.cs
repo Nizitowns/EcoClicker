@@ -2,7 +2,7 @@ using _game.Scripts.Extensions;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace _D.Scripts.UI
+namespace _game.Scripts.UI
 {
     [RequireComponent(typeof(UIDocument))]
     public class BaseUI : MonoBehaviour

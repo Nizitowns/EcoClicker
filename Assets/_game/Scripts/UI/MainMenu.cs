@@ -1,4 +1,3 @@
-using _D.Scripts.UI;
 using _game.Scripts.Audio;
 using _game.Scripts.Extensions;
 using UnityEngine;

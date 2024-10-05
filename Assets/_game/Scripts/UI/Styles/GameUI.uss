@@ -1,0 +1,81 @@
+.container {
+    flex-direction: row;
+    align-items: stretch;
+    flex-grow: 0;
+    flex-shrink: 1;
+    height: 100%;
+}
+
+.section {
+    height: 100%;
+    width: 33%;
+    flex-shrink: 1;
+}
+
+.left-side-buttons-container {
+    left: 15px;
+    top: 25px;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.middle-section {
+    align-items: center;
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.energy-bar {
+    height: auto;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    width: 100%;
+    align-items: flex-end;
+    max-height: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+.energy-bar-text {
+    color: rgb(114, 169, 62);
+    margin-top: -4px;
+    -unity-font-style: bold;
+}
+
+.energy-bar-label {
+    font-size: 20px;
+    -unity-font-style: bold;
+}
+
+.menu-label {
+    margin-top: -5px;
+    font-size: 18px;
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
+}
+
+.water-tank {
+    rotate: -90deg;
+    background-color: rgb(245, 245, 245);
+    width: 200px;
+    position: absolute;
+    align-items: center;
+    max-height: 25px;
+    min-height: 25px;
+    top: 200px;
+    right: -72px;
+}
+
+.water-tank-label {
+    margin-top: -33px;
+    -unity-font-style: bold;
+    font-size: 20px;
+}

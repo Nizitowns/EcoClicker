@@ -1,0 +1,29 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_game/Scripts/UI/Styles/GameUI.uss?fileID=7433441132597879392&amp;guid=d39b641524608d9478cc2c1345227e79&amp;type=3#GameUI" />
+    <Style src="project://database/Assets/_game/Scripts/UI/Styles/Buttons.uss?fileID=7433441132597879392&amp;guid=79a92c933e33ffc48882beb2789c822b&amp;type=3#Buttons" />
+    <engine:VisualElement name="Container" class="container" style="flex-grow: 1;">
+        <engine:VisualElement name="LeftSideMenu" class="section" style="flex-grow: 1;">
+            <engine:VisualElement name="LeftSideButtons" class="left-side-buttons-container" style="flex-grow: 1;">
+                <engine:Button class="rounded-square" />
+                <engine:Label text="Menu&#10;" class="menu-label" />
+                <engine:Button class="rounded-square" />
+                <engine:Label text="Seed" class="menu-label" />
+                <engine:Button class="rounded-square" />
+                <engine:Label text="Fertilizer" class="menu-label" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="MiddleMenu" class="section middle-section" style="flex-grow: 1;">
+            <engine:Button text="Upgrade Button" class="upgrade-button" />
+            <engine:VisualElement name="EnergyBar" class="energy-bar" style="flex-grow: 1;">
+                <engine:Label text="2/10" class="energy-bar-text" />
+            </engine:VisualElement>
+            <engine:Label text="Energy Bar" class="energy-bar-label" />
+        </engine:VisualElement>
+        <engine:VisualElement name="RightSideMenu" class="section" style="flex-grow: 1;">
+            <engine:VisualElement name="ObjectiveSpace" style="flex-grow: 1;" />
+            <engine:VisualElement name="WaterTank" class="water-tank" style="flex-grow: 1;">
+                <engine:Label text="Water Tank" double-click-selects-word="false" triple-click-selects-line="false" display-tooltip-when-elided="false" emoji-fallback-support="false" class="water-tank-label" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

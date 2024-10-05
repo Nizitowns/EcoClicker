@@ -112,7 +112,6 @@ namespace _game.Scripts.Managers
         public StoreDataSerializable[] Stores;
     }
 
-    [System.Serializable]
     public struct StoreDataSerializable
     {
         public int StoreCount;
