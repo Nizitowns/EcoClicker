@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_game/Scenes/Dragoons/MainMenu.unity
+    guid: 0d94b74dc1d4fd34b9bbfcffaa3441eb
+  - enabled: 1
     path: Assets/_game/Scenes/Dragoons/Game.unity
     guid: 567ab0decf34724498535b1de45e2f26
   m_configObjects: {}

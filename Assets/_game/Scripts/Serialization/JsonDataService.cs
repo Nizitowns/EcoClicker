@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using _game.Scripts.Managers;
 using UnityEngine;
 using Newtonsoft.Json;
 
 namespace _game.Scripts.Serialization
 {
     //TODO: open file and write to it as needed
+    //TODO: Cleanup and refactor
     public class JsonDataService : IDataService
     {
         public bool SaveData<T>(string relativePath, T data)
@@ -21,6 +23,9 @@ namespace _game.Scripts.Serialization
                     using FileStream stream = File.Create(path);
                     stream.Close();
                     File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented));
+#if UNITY_WEBGL && !UNITY_EDITOR
+                    Application.ExternalEval("FS.syncfs(false, function (err) { console.log(err); });");
+#endif
                     return true;
                 }
 
@@ -35,10 +40,13 @@ namespace _game.Scripts.Serialization
             {
                 try
                 {
-                    Debug.Log("Creating Save Data for the first time");
+                    Debug.Log($"Creating {path} Save Data for the first time");
                     using FileStream stream = File.Create(path);
                     stream.Close();
                     File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented));
+#if UNITY_WEBGL && !UNITY_EDITOR
+                    Application.ExternalEval("FS.syncfs(false, function (err) { console.log(err); });");
+#endif
                     return true;
                 }
 
@@ -72,7 +80,12 @@ namespace _game.Scripts.Serialization
         
         private string SetPath(string relativePath)
         {
-            return Application.persistentDataPath + "/" + relativePath + ".json";
+            
+            var path = Path.Combine(Application.persistentDataPath, relativePath);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            path = Path.Combine("/idbfs/", relativePath);   //Sets the path to the IndexedDB file system
+#endif
+            return path;
         }
 
     }

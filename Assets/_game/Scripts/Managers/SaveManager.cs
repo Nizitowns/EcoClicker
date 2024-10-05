@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using _game.Scripts.Serialization;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace _game.Scripts.Managers
@@ -10,14 +11,14 @@ namespace _game.Scripts.Managers
     {
         public static SaveManager Instance { get; private set; }
         
-        [SerializeField] private string relativePath;
+        [SerializeField] private string relativePath = "saveData.json";
         [SerializeField] private List<Store> stores;
 
         private JsonDataService _jsonDataService;
 
         private GameDataSerializable _gameData;
         private float _timer;
-        private float _saveInterval = 5.0f;
+        private float _saveInterval = 15.0f;
 
         private void Awake()
         {
@@ -49,7 +50,8 @@ namespace _game.Scripts.Managers
         private void Load()
         {
             Debug.Log("Try to lod save data");
-            _jsonDataService = new JsonDataService();
+            if(_jsonDataService == null)
+                _jsonDataService = new JsonDataService();
             _gameData = _jsonDataService.LoadData<GameDataSerializable>(relativePath);
             GameManager.Instance.SetBalance(_gameData.StartingBalance);
             GameManager.Instance.SetCompanyName(_gameData.CompanyName);

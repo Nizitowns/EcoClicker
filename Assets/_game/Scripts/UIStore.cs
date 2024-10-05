@@ -42,10 +42,10 @@ public class UIStore : MonoBehaviour
         {
             myCanvasGroup.interactable = false;
             myCanvasGroup.alpha = 0;
-            Debug.Log($" {myStore.name} Store is not unlocked");
+//            Debug.Log($" {myStore.name} Store is not unlocked");
             return;
         }
-        Debug.Log($" {myStore.name} Store is unlocked");
+//        Debug.Log($" {myStore.name} Store is unlocked");
         myCanvasGroup.interactable = true;
         myCanvasGroup.alpha = 1;
     }
