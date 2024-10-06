@@ -1236,9 +1236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a545523e902572a4699a96b10f37bf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeState: 0
-  actualScale: {x: 0, y: 0, z: 0}
-  countdownTimer: 600
 --- !u!136 &1623896003
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1277,6 +1274,8 @@ MonoBehaviour:
   treeState: 0
   actualScale: {x: 0, y: 0, z: 0}
   countdownTimer: 10
+  glowingTimer: 5
+  timer: 0
 --- !u!1 &1716060027
 GameObject:
   m_ObjectHideFlags: 0
