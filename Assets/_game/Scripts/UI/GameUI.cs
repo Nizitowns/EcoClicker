@@ -1,3 +1,4 @@
+using System;
 using _game.Scripts.Extensions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -82,7 +83,13 @@ namespace _game.Scripts.UI
             var label = buttonParent.CreateChild<Label>("left-side-btn-label", "menu-label");
             label.text = labelText;
             return button;
-        } 
-        
+        }
+
+        //TODO: implement validation in base UI
+        /*private void OnValidate()
+        {
+            container.Clear();
+            InitGameUI();
+        }*/
     }
 }
