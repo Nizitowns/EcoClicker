@@ -23,12 +23,6 @@ public class UIManager : MonoBehaviour
         currentState = State.Main;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnEnable()
     {
         GameManager.OnUpdateBalance += UpdateUI;

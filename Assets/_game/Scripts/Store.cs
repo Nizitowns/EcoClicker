@@ -1,3 +1,4 @@
+using System;
 using _game.Scripts;
 using _game.Scripts.Managers;
 using TMPro;
@@ -25,6 +26,16 @@ public class Store : MonoBehaviour
     [SerializeField] public bool managerUnlocked = false; // To Refactor
     [SerializeField] public bool storeUnlocked = false; // To Refactor
     bool startTimer = false;
+    
+    public static event Action<Store> OnStoreCreated;
+    public event Action OnStoreUnlocked;
+    
+    private void Awake()
+    {
+        OnStoreCreated?.Invoke(this);
+        if(storeUnlocked)
+            OnStoreUnlocked?.Invoke();
+    }
     
     // Update is called once per frame
     void Update()
@@ -111,4 +122,5 @@ public class Store : MonoBehaviour
     public void SetStoreName(string storeNameText) => this.storeNameText.text = storeNameText;
 
     public void SetStoreImage(Sprite img) => storeImage.sprite = img;
+
 }

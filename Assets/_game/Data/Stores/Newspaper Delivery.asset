@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StoreImage>k__BackingField: {fileID: 21300000, guid: 45d54935e3dbdc147a7bfc52a0a50d79, type: 3}
   <StoreName>k__BackingField: Newspaper Delivery
-  <BaseStoreCost>k__BackingField: 7
-  <BaseStoreProfit>k__BackingField: 1
-  <StoreTimer>k__BackingField: 12
+  <BaseStoreCost>k__BackingField: 60
+  <StoreMultiplier>k__BackingField: 1.15
+  <StoreTimer>k__BackingField: 3
+  <BaseStoreProfit>k__BackingField: 60
   <StoreCount>k__BackingField: 0
-  <StoreMultiplier>k__BackingField: 1.2
   <StoreTimerDivision>k__BackingField: 25
   <ManagerName>k__BackingField: Linda Shrine
-  <ManagerCost>k__BackingField: 4
+  <ManagerCost>k__BackingField: 60
