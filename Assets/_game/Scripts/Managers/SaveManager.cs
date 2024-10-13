@@ -52,7 +52,7 @@ namespace _game.Scripts.Managers
             Debug.Log("Try to lod save data");
             if(_jsonDataService == null)
                 _jsonDataService = new JsonDataService();
-            _gameData = _jsonDataService.LoadData<GameDataSerializable>(relativePath);
+            _gameData = _jsonDataService.LoadData<GameDataSerializable>(relativePath, false);
             GameManager.Instance.SetBalance(_gameData.StartingBalance);
             GameManager.Instance.SetCompanyName(_gameData.CompanyName);
             InitStores();
@@ -74,7 +74,7 @@ namespace _game.Scripts.Managers
             if(_jsonDataService == null)
                 _jsonDataService = new JsonDataService();
             var data = CopyGameData();
-            _jsonDataService.SaveData(relativePath, data);
+            _jsonDataService.SaveData(relativePath, data, false);
             Debug.Log("Saved Data");
         }
 
