@@ -104,6 +104,7 @@ namespace _game.Scripts.Managers
                     StoreTimerDivision = store.StoreTimerDivision,
                     ManagerCost = store.ManagerCost,
                     StoreUnlocked = store.IsUnlocked,
+                    ManagerName = store.ManagerName
                 };
             }
             

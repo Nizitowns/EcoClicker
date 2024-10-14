@@ -42,6 +42,13 @@ namespace _game.Scripts.UI
             var buyButton = store.Q<Button>("store-buy-btn");
             var progressBar = store.Q<ProgressBar>("store-progress-bar");
             var storeCount = store.Q<Label>("store-count");
+            
+            var manager = store.Q<VisualElement>("store-manager");
+            var managerButton = store.Q<Button>("manager-btn");
+            var managerName = store.Q<Label>("manager-name");
+            var mnagerPrice = store.Q<Label>("manager-price");
+            
+            manager.style.display = DisplayStyle.None;
 
             store.name = $"store-{storeData.Id}";
             useButton.style.backgroundImage = gameDataSo.GetStoreImageFromID(storeData.Id);
@@ -70,6 +77,22 @@ namespace _game.Scripts.UI
             var progressBar = store.Q<ProgressBar>("store-progress-bar");
             var storeCost = store.Q<Label>("store-cost");
             var nextStore = container.Q<VisualElement>($"store-{int.Parse(storeData.Id) + 1}");
+            var manager = store.Q<VisualElement>("store-manager");
+            var managerButton = store.Q<Button>("manager-btn");
+            var managerName = store.Q<Label>("manager-name");
+            var mnagerPrice = store.Q<Label>("manager-price");
+            
+            if(storeData.CanBuyManager() && !storeData.ManagerUnlocked)
+            {
+                manager.style.display = DisplayStyle.Flex;
+                managerName.text = storeData.ManagerName;
+                mnagerPrice.text = storeData.ManagerCost.ToString("F2") + "$";
+                managerButton.clicked += () => storeManager.BuyManager(storeData);
+            }
+            
+            if(storeData.ManagerUnlocked)
+                manager.style.display = DisplayStyle.None;
+            
             nextStore.visible = true;
             
             storeCount.text = storeData.StoreCount.ToString();

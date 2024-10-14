@@ -6,12 +6,20 @@
                 <engine:Label text="0" name="store-count" style="top: 15px;" />
             </engine:Button>
         </engine:VisualElement>
-        <engine:VisualElement style="flex-grow: 1;">
+        <engine:VisualElement name="store-status" style="flex-grow: 1;">
             <engine:ProgressBar value="0" title="0.00$" enabled="true" name="store-progress-bar" />
             <engine:Button name="store-buy-btn" enable-rich-text="false" emoji-fallback-support="false">
                 <engine:VisualElement name="store-label-container" style="flex-grow: 1;">
                     <engine:Label text="Buy" name="store-buy-label" style="position: absolute; top: 0; left: 0;" />
                     <engine:Label text="$1.00" name="store-cost" />
+                </engine:VisualElement>
+            </engine:Button>
+        </engine:VisualElement>
+        <engine:VisualElement name="store-manager" style="flex-grow: 1; visibility: visible; display: flex;">
+            <engine:Button name="manager-btn" style="height: 100px;">
+                <engine:VisualElement name="container" style="flex-grow: 1;">
+                    <engine:Label text="Big Bob" name="manager-name" />
+                    <engine:Label text="0.00$" name="manager-price" />
                 </engine:VisualElement>
             </engine:Button>
         </engine:VisualElement>

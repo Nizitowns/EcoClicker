@@ -72,7 +72,6 @@ namespace _game.Scripts.Managers
 
         public void BuyStore(StoreData data)
         {
-            Debug.Log($"Buying store {data.StoreName}");
             if(!CanBuyStore(data)) return;
             AddToBalance(-data.GetStoreCost());
             
@@ -97,16 +96,26 @@ namespace _game.Scripts.Managers
             OnBalanceChanged?.Invoke(storeManagerData.CurrentBalance);
         }
 
-        public void ActivateStore(StoreData data)
+        public void ActivateStore(StoreData sd)
         {
-            if (data.StoreCount > 0)
+            OnStoreChanged?.Invoke(sd);
+            if (sd.StoreCount > 0)
             {
-                data.StartTimer = true;
-                OnStoreActivated?.Invoke(data);
+                sd.StartTimer = true;
+                sd.StoreUnlocked = true;
+                OnStoreActivated?.Invoke(sd);
             }
         }
         
         public float GetCurrentBalance() => storeManagerData.CurrentBalance;
+
+        public void BuyManager(StoreData data)
+        {
+            if (!data.CanBuyManager()) return;
+            AddToBalance(-data.ManagerCost);
+            data.ManagerUnlocked = true;
+            OnStoreChanged?.Invoke(data);
+        }
     }
 
     [Serializable]
@@ -121,6 +130,7 @@ namespace _game.Scripts.Managers
     public class StoreData : ISaveable
     {
         [field: SerializeField] public string Id { get; set; }
+        public string ManagerName { get; set; }
         public string StoreName;
         public float BaseStoreCost;
         public float CurrentStoreCost;
@@ -137,5 +147,7 @@ namespace _game.Scripts.Managers
 
         
         public float GetStoreCost() => BaseStoreCost * Mathf.Pow(StoreMultiplier, StoreCount);
+
+        public bool CanBuyManager() => StoreUnlocked && StoreCount > 0 && StoreManager.Instance.GetCurrentBalance() >= ManagerCost;
     }
 }
