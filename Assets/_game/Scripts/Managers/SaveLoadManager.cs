@@ -1,15 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _game.Scripts.GameData;
 using _game.Scripts.Serialization;
 using _game.Scripts.Utility;
 using UnityEngine;
-using _game.Scripts.Serialization;
-using _game.Scripts.UI;
-using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 namespace _game.Scripts.Managers
 {
@@ -19,7 +16,9 @@ namespace _game.Scripts.Managers
         [SerializeField] private GameDataSo newGameData;
         [SerializeField] private bool overwriteSave = true;
         [SerializeField] private SaveData saveData;
+        [SerializeField] private float saveInterval = 20f;
         [SerializeField] private string saveName = "SaveData";
+        [SerializeField] private string gameSceneName = "Game";
         [SerializeField] private string mainSceneName = "Main";
         
         private IDataService dataService;
@@ -27,10 +26,29 @@ namespace _game.Scripts.Managers
         protected override void Awake()
         {
             base.Awake();
+#if UNITY_WEBGL && !UNITY_EDITOR
+            dataService = new WebDataService(new JsonSerializer());
+                Application.ExternalEval(
+                @"window.onbeforeunload = function() {
+                    SendMessage('SaveLoadManager', 'SaveGame');
+                };"
+                );
+#else
             dataService = new FileDataService(new JsonSerializer());
-            
+#endif
+
+            if(SceneManager.GetActiveScene().name == mainSceneName)
+                return;
             if (!dataService.SaveExists(saveData.Name))
                 NewGame();
+            StartCoroutine(SaveCoroutine());
+        }
+        
+        private IEnumerator SaveCoroutine()
+        {
+            yield return new WaitForSeconds(saveInterval);
+            SaveGame();
+            StartCoroutine(SaveCoroutine());
         }
         
         void OnEnable()
@@ -110,7 +128,7 @@ namespace _game.Scripts.Managers
             
             saveData.Name = saveName;
             saveData.StoreManagerData = storeManagerData;
-            saveData.CurrentSceneName = SceneManager.GetActiveScene().name;
+            saveData.CurrentSceneName = gameSceneName;
             SaveGame();
             LoadGame(saveData.Name); //TODO: fix this workaround
         }
@@ -118,9 +136,9 @@ namespace _game.Scripts.Managers
         [ContextMenu("Save Game")]
         private void SaveGame() => dataService.Save(saveData, overwriteSave);
         
-        public void LoadGame(string saveName)
+        public void LoadGame(string saveFileName)
         {
-            saveData = dataService.Load<SaveData>(saveName);
+            saveData = dataService.Load<SaveData>(saveFileName);
             
             if(String.IsNullOrEmpty(saveData.CurrentSceneName))
                 saveData.CurrentSceneName = mainSceneName;
@@ -131,7 +149,12 @@ namespace _game.Scripts.Managers
         [ContextMenu("Reload Game")]
         public void ReloadGame() => LoadGame(saveData.Name);
         
-        public void DeleteSaveGame(string saveName) => dataService.Delete(saveName);
+        public void DeleteSaveGame(string saveFileName) => dataService.Delete(saveFileName);
+
+        private void OnApplicationQuit()
+        {
+            SaveGame();
+        }
     }
     
     [Serializable]

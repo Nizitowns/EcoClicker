@@ -33,7 +33,6 @@ namespace _game.Scripts.UI
         //TODO: Data bind visual elements to stores
         private void CreateButton(StoreData storeData)
         {
-            Debug.Log($"{storeData.StoreName} created");
             var store = buttonTemplate.CloneTree().Q<VisualElement>("store");
             store.visible = false;
             //button.Q<Label>("storeName").text = storeData.StoreName;
@@ -93,7 +92,9 @@ namespace _game.Scripts.UI
             if(storeData.ManagerUnlocked)
                 manager.style.display = DisplayStyle.None;
             
-            nextStore.visible = true;
+            if(storeData.StoreUnlocked)
+                nextStore.visible = true;
+            //nextStore.visible = true;
             
             storeCount.text = storeData.StoreCount.ToString();
             storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
@@ -119,11 +120,22 @@ namespace _game.Scripts.UI
             while (time < duration)
             {
                 time += Time.deltaTime;
-                progressBar.value = Mathf.Lerp(startValue, targetValue, time / duration);
+
+                if(store.StoreTimer > 0.15f)
+                {
+                    progressBar.value = Mathf.Lerp(startValue, targetValue, time / duration);
+                }
+                else
+                {
+                    progressBar.value = progressBar.highValue;
+                }
                 yield return null;
             }
+            
             store.TimerRunning = false;
-            progressBar.value = 0;
+            
+            if(store.StoreTimer > 0.15f) 
+                progressBar.value = 0;
             storeManager.AddToBalance(store.BaseStoreProfit * store.StoreCount);
             
             if(store.ManagerUnlocked)

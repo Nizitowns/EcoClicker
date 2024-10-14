@@ -66,6 +66,7 @@ namespace _game.Scripts.Managers
             storeManagerData = data;
             foreach (var store in storeManagerData.Stores)
             {
+                store.TimerRunning = false;
                 OnStoreCreated?.Invoke(store);
             }
         }
