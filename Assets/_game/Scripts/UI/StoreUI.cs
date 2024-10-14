@@ -35,7 +35,7 @@ namespace _game.Scripts.UI
         {
             Debug.Log($"{storeData.StoreName} created");
             var store = buttonTemplate.CloneTree().Q<VisualElement>("store");
-            
+            store.visible = false;
             //button.Q<Label>("storeName").text = storeData.StoreName;
             var useButton = store.Q<Button>("store-use-btn");
             var storeCost = store.Q<Label>("store-cost");
@@ -51,6 +51,9 @@ namespace _game.Scripts.UI
             storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
             buyButton.clicked += () => storeManager.BuyStore(storeData);
 
+            if(storeData.StoreUnlocked)
+                store.visible = true;
+            
             container.Add(store);
             UpdateBalance(storeManager.GetCurrentBalance());
         }
@@ -60,17 +63,18 @@ namespace _game.Scripts.UI
             _currentBalance.text = "Balance: " + value.ToString("F2") + "$";
         }
         
-        private void UpdateStore(StoreData store)
+        private void UpdateStore(StoreData storeData)
         {
-            Debug.Log($"{store.StoreName} updated");
-            var storeButton = container.Q<VisualElement>($"store-{store.Id}");
-            var storeCount = storeButton.Q<Label>("store-count");
-            var progressBar = storeButton.Q<ProgressBar>("store-progress-bar");
-            var storeCost = storeButton.Q<Label>("store-cost");
+            var store = container.Q<VisualElement>($"store-{storeData.Id}");
+            var storeCount = store.Q<Label>("store-count");
+            var progressBar = store.Q<ProgressBar>("store-progress-bar");
+            var storeCost = store.Q<Label>("store-cost");
+            var nextStore = container.Q<VisualElement>($"store-{int.Parse(storeData.Id) + 1}");
+            nextStore.visible = true;
             
-            storeCount.text = store.StoreCount.ToString();
-            storeCost.text = store.GetStoreCost().ToString("F2") + "$";
-            progressBar.title = (store.BaseStoreProfit * store.StoreCount).ToString("F2") + "$";
+            storeCount.text = storeData.StoreCount.ToString();
+            storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
+            progressBar.title = (storeData.BaseStoreProfit * storeData.StoreCount).ToString("F2") + "$";
             
             //StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer));
         }
@@ -80,22 +84,29 @@ namespace _game.Scripts.UI
             var storeButton = container.Q<VisualElement>($"store-{store.Id}");
             var progressBar = storeButton.Q<ProgressBar>("store-progress-bar");
             if(store.TimerRunning) return;
-            StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer));
+            StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer, store));
         }
 
-        private IEnumerator AdvanceProgressBar(ProgressBar progressBar, float targetValue, float duration)
+        //TODO: Move to update
+        private IEnumerator AdvanceProgressBar(ProgressBar progressBar, float targetValue, float duration, StoreData store)
         {
             float startValue = 0;
             float time = 0;
-
+            store.TimerRunning = true;
             while (time < duration)
             {
                 time += Time.deltaTime;
                 progressBar.value = Mathf.Lerp(startValue, targetValue, time / duration);
                 yield return null;
             }
-
+            store.TimerRunning = false;
             progressBar.value = 0;
+            storeManager.AddToBalance(store.BaseStoreProfit * store.StoreCount);
+            
+            if(store.ManagerUnlocked)
+                StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer, store));
+            
+            
         }
 
         

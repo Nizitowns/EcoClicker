@@ -91,7 +91,7 @@ namespace _game.Scripts.Managers
             return storeManagerData.CurrentBalance >= data.GetStoreCost();
         }
         
-        private void AddToBalance(float amount)
+        public void AddToBalance(float amount)
         {
             storeManagerData.CurrentBalance += amount;
             OnBalanceChanged?.Invoke(storeManagerData.CurrentBalance);
@@ -103,18 +103,7 @@ namespace _game.Scripts.Managers
             {
                 data.StartTimer = true;
                 OnStoreActivated?.Invoke(data);
-                StartCoroutine(StartStoreTimer(data));
             }
-        }
-        
-        private IEnumerator StartStoreTimer(StoreData data)
-        {
-            if(data.TimerRunning) yield break;
-            data.TimerRunning = true;
-            yield return new WaitForSeconds(data.StoreTimer);
-            AddToBalance(data.BaseStoreProfit * data.StoreCount);
-            OnStoreChanged?.Invoke(data);
-            data.TimerRunning = false;
         }
         
         public float GetCurrentBalance() => storeManagerData.CurrentBalance;

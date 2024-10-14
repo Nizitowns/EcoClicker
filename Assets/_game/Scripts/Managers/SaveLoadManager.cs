@@ -103,6 +103,7 @@ namespace _game.Scripts.Managers
                     StoreMultiplier = store.StoreMultiplier,
                     StoreTimerDivision = store.StoreTimerDivision,
                     ManagerCost = store.ManagerCost,
+                    StoreUnlocked = store.IsUnlocked,
                 };
             }
             

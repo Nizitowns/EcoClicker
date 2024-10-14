@@ -19,5 +19,7 @@ namespace _game.Scripts.GameData
         [field: SerializeField] public int StoreTimerDivision { get; private set; }
         [field: SerializeField] public string ManagerName { get; private set; }
         [field: SerializeField] public float ManagerCost { get; private set; }
+        [field: SerializeField] public bool IsUnlocked { get; private set; }
+        [field: SerializeField] public float StoreUnlockedAt { get; private set; }
     }
 }
