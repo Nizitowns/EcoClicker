@@ -4,8 +4,9 @@ using UnityEngine.UI;
 namespace _game.Scripts.GameData
 {
     [CreateAssetMenu(menuName = "Data/StoreData", fileName = "StoreData", order = 0)]
-    public class StoreData : ScriptableObject
+    public class StoreDataSo : ScriptableObject
     {
+        [field: SerializeField] public string Id { get; set; }
         [field: SerializeField] public Sprite StoreImage { get; private set; }
         [field: SerializeField] public string StoreName { get; private set; }
         [field: SerializeField] public float BaseStoreCost { get; private set; }
@@ -18,6 +19,7 @@ namespace _game.Scripts.GameData
         [field: SerializeField] public int StoreTimerDivision { get; private set; }
         [field: SerializeField] public string ManagerName { get; private set; }
         [field: SerializeField] public float ManagerCost { get; private set; }
-        
+        [field: SerializeField] public bool IsUnlocked { get; private set; }
+        [field: SerializeField] public float StoreUnlockedAt { get; private set; }
     }
 }

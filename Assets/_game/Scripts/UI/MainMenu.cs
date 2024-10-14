@@ -1,5 +1,6 @@
 using _game.Scripts.Audio;
 using _game.Scripts.Extensions;
+using _game.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -30,8 +31,12 @@ namespace _game.Scripts.UI
             title.text = gameName;
 
             var startGame = _buttonContainer.CreateChild<Button>("start-game-btn", "generic-button");
-            startGame.text = "START";
-            startGame.clickable.clicked += LoadScene;
+            startGame.text = "NEW GAME";
+            startGame.clickable.clicked += NewGame;
+            
+            var loadGame = _buttonContainer.CreateChild<Button>("load-game-btn", "generic-button");
+            loadGame.text = "LOAD GAME";
+            loadGame.clickable.clicked += LoadGame;
             
             var options = _buttonContainer.CreateChild<Button>("options-btn", "generic-button");
             options.text = "OPTIONS";
@@ -78,9 +83,15 @@ namespace _game.Scripts.UI
             //Need to update panel settings to properly fit the new screen size
         }
 
-        public void LoadScene()
+        public void NewGame()
         {
-            SceneManager.LoadScene(sceneToLoad);
+            SaveLoadManager.Instance.NewGame();
+        }
+
+        //TODO: Implement Load Game
+        public void LoadGame()
+        {
+            SaveLoadManager.Instance.LoadGame("SaveData");
         }
 
     }

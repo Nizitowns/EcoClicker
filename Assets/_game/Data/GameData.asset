@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cb0cc2e120be7489af546221acc4da, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  <StartingBalance>k__BackingField: 2.5
+  <StartingBalance>k__BackingField: 3
   <CompanyName>k__BackingField: Eco Clicker Company #1
   <Stores>k__BackingField:
   - {fileID: 11400000, guid: aaf8c6b3a5bf27047bd849d2045f72e0, type: 2}
