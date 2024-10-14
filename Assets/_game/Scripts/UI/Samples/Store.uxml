@@ -1,0 +1,19 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_game/Scripts/UI/Styles/Shop.uss?fileID=7433441132597879392&amp;guid=67324da880793ab4693a2ef8297c3931&amp;type=3#Shop" />
+    <engine:VisualElement name="store" style="flex-grow: 0; width: 600px; height: 110px; flex-direction: row; background-color: rgba(0, 0, 0, 0.4); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; margin-top: 10px; margin-left: 10px; margin-bottom: 10px; margin-right: 10px; font-size: 24px;">
+        <engine:VisualElement name="VisualElement" style="flex-grow: 0;">
+            <engine:Button name="store-use-btn" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_game/Textures/Week%20of%209-29/Seed%20Icon%20Type%201.png?fileID=2800000&amp;guid=09ca9b4c4fc31494b82057984c82fb52&amp;type=3#Seed Icon Type 1&quot;); border-top-left-radius: 46px; border-top-right-radius: 46px; border-bottom-right-radius: 46px; border-bottom-left-radius: 46px; width: 100px; -unity-background-scale-mode: stretch-to-fill; background-size: 50% 50%; flex-direction: column-reverse;">
+                <engine:Label text="0" name="store-count" style="top: 15px;" />
+            </engine:Button>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1;">
+            <engine:ProgressBar value="0" title="0.00$" enabled="true" name="store-progress-bar" />
+            <engine:Button name="store-buy-btn" enable-rich-text="false" emoji-fallback-support="false">
+                <engine:VisualElement name="store-label-container" style="flex-grow: 1;">
+                    <engine:Label text="Buy" name="store-buy-label" style="position: absolute; top: 0; left: 0;" />
+                    <engine:Label text="$1.00" name="store-cost" />
+                </engine:VisualElement>
+            </engine:Button>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

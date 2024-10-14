@@ -1,16 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:Template name="Shop" src="project://database/Assets/_game/Scripts/UI/Samples/Shop.uxml?fileID=9197481963319205126&amp;guid=baf9f128889c50a4c99b4b385dde8444&amp;type=3#Shop" />
     <Style src="project://database/Assets/_game/Scripts/UI/Styles/Game.uss?fileID=7433441132597879392&amp;guid=ce64a9a165b97aa45b2a214cc3da0a09&amp;type=3#Game" />
     <engine:VisualElement name="container" class="continer" style="flex-grow: 1; overflow: hidden; flex-shrink: 0; visibility: visible; display: flex;">
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
-        <engine:Instance template="Shop" />
+        <engine:Label text="0.00$" name="store-balance" enable-rich-text="true" class="store-balance" style="color: rgb(255, 255, 255); -unity-text-outline-color: rgb(0, 0, 0); -unity-text-outline-width: 2px;" />
     </engine:VisualElement>
 </engine:UXML>

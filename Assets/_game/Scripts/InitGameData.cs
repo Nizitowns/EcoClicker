@@ -12,7 +12,7 @@ namespace _game.Scripts
     {
         public static event Action OnLoadDataComplete;
 
-        [SerializeField] GameData.GameData gameData;
+        [SerializeField] GameData.GameDataSo gameDataSo;
         [SerializeField] Store storePrefab;
         [SerializeField] GameObject storePanel;
 
@@ -34,20 +34,20 @@ namespace _game.Scripts
 
         private void LoadGameManagerData()
         {
-            GameManager.Instance.AddToBalance(gameData.StartingBalance);
-            GameManager.Instance.SetCompanyName(gameData.CompanyName);
+            GameManager.Instance.AddToBalance(gameDataSo.StartingBalance);
+            GameManager.Instance.SetCompanyName(gameDataSo.CompanyName);
         }
 
         private void InitStores()
         {
             
-            foreach (var store in gameData.Stores)
+            foreach (var store in gameDataSo.Stores)
             {
                 CreateNewStore(store);
             }
         }
     
-        private void CreateNewStore(StoreData store)
+        private void CreateNewStore(StoreDataSo store)
         {
             Store storeObject = Instantiate<Store>(storePrefab, storePanel.transform, false);
             storeObject.name = store.StoreName;
@@ -58,7 +58,7 @@ namespace _game.Scripts
             storeObject.SetNextStoreCost(storeObject.baseStoreCost);
         }
     
-        private void SetStoreObject( Store storeObject, StoreData store)
+        private void SetStoreObject( Store storeObject, StoreDataSo store)
         {
             storeObject.SetStoreName(store.StoreName);
 
@@ -75,7 +75,7 @@ namespace _game.Scripts
             CreateManager(store.ManagerName, storeObject, store);
         }
     
-        private void CreateManager(string managerName, Store storeObject, StoreData store)
+        private void CreateManager(string managerName, Store storeObject, StoreDataSo store)
         {
             GameObject newManager = (GameObject)Instantiate(managerPrefab, managerPanel.transform, false);
 

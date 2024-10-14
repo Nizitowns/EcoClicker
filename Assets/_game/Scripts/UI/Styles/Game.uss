@@ -2,3 +2,15 @@
     flex-shrink: 0;
     flex-grow: 1;
 }
+
+.store-balance {
+    -unity-text-align: upper-center;
+    font-size: 32px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-color: rgb(0, 0, 0);
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 5px;
+}
