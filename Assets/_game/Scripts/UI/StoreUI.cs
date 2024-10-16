@@ -79,13 +79,13 @@ namespace _game.Scripts.UI
             var manager = store.Q<VisualElement>("store-manager");
             var managerButton = store.Q<Button>("manager-btn");
             var managerName = store.Q<Label>("manager-name");
-            var mnagerPrice = store.Q<Label>("manager-price");
+            var managerPrice = store.Q<Label>("manager-price");
             
             if(storeData.CanBuyManager() && !storeData.ManagerUnlocked)
             {
                 manager.style.display = DisplayStyle.Flex;
                 managerName.text = storeData.ManagerName;
-                mnagerPrice.text = storeData.ManagerCost.ToString("F2") + "$";
+                managerPrice.text = storeData.ManagerCost.ToString("F2") + "$";
                 managerButton.clicked += () => storeManager.BuyManager(storeData);
             }
             
@@ -94,8 +94,7 @@ namespace _game.Scripts.UI
             
             if(storeData.StoreUnlocked)
                 nextStore.visible = true;
-            //nextStore.visible = true;
-            
+
             storeCount.text = storeData.StoreCount.ToString();
             storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
             progressBar.title = (storeData.BaseStoreProfit * storeData.StoreCount).ToString("F2") + "$";
@@ -137,6 +136,8 @@ namespace _game.Scripts.UI
             if(store.StoreTimer > 0.15f) 
                 progressBar.value = 0;
             storeManager.AddToBalance(store.BaseStoreProfit * store.StoreCount);
+            
+            UpdateStore(store);
             
             if(store.ManagerUnlocked)
                 StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer, store));
