@@ -3,8 +3,10 @@ using System.Collections;
 using _game.Scripts.Extensions;
 using _game.Scripts.GameData;
 using _game.Scripts.Managers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using _game.Scripts.Extensions;
 
 namespace _game.Scripts.UI
 {
@@ -52,9 +54,9 @@ namespace _game.Scripts.UI
             store.name = $"store-{storeData.Id}";
             useButton.style.backgroundImage = gameDataSo.GetStoreImageFromID(storeData.Id);
             storeCount.text = storeData.StoreCount.ToString();
-            progressBar.title = storeData.BaseStoreProfit.ToString("F2") + "$";
+            progressBar.title = storeData.BaseStoreProfit.ToShortFormat() + "$";
             useButton.clicked += () => storeManager.ActivateStore(storeData);
-            storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
+            storeCost.text = storeData.GetStoreCost().ToShortFormat() + "$";
             buyButton.clicked += () => storeManager.BuyStore(storeData);
 
             if(storeData.StoreUnlocked)
@@ -66,7 +68,7 @@ namespace _game.Scripts.UI
         
         private void UpdateBalance(float value)
         {
-            _currentBalance.text = "Balance: " + value.ToString("F2") + "$";
+            _currentBalance.text = "Balance: " + value.ToShortFormat() + "$";
         }
         
         private void UpdateStore(StoreData storeData)
@@ -85,7 +87,7 @@ namespace _game.Scripts.UI
             {
                 manager.style.display = DisplayStyle.Flex;
                 managerName.text = storeData.ManagerName;
-                managerPrice.text = storeData.ManagerCost.ToString("F2") + "$";
+                managerPrice.text = storeData.ManagerCost.ToShortFormat() + "$";
                 managerButton.clicked += () => storeManager.BuyManager(storeData);
             }
             
@@ -96,8 +98,8 @@ namespace _game.Scripts.UI
                 nextStore.visible = true;
 
             storeCount.text = storeData.StoreCount.ToString();
-            storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
-            progressBar.title = (storeData.BaseStoreProfit * storeData.StoreCount).ToString("F2") + "$";
+            storeCost.text = storeData.GetStoreCost().ToShortFormat() + "$";
+            progressBar.title = (storeData.BaseStoreProfit * storeData.StoreCount).ToShortFormat() + "$";
             
             //StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer));
         }
