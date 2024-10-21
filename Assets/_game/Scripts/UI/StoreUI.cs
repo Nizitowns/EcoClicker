@@ -3,14 +3,17 @@ using System.Collections;
 using _game.Scripts.Extensions;
 using _game.Scripts.GameData;
 using _game.Scripts.Managers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using _game.Scripts.Extensions;
 
 namespace _game.Scripts.UI
 {
     public class StoreUI : BaseUI
     {
 
+        [SerializeField] private Texture2D bgImage;
         [SerializeField] private StoreManager storeManager;
         [SerializeField] private GameDataSo gameDataSo;
         [SerializeField] private VisualTreeAsset buttonTemplate;
@@ -21,6 +24,8 @@ namespace _game.Scripts.UI
         {
             base.Awake();
             _currentBalance = container.CreateChild<Label>("store-balance");
+            container.style.backgroundImage = bgImage;
+            container.style.flexGrow = 1;
             
             storeManager.OnStoreCreated += CreateButton;
             storeManager.OnStoreChanged += UpdateStore;
@@ -52,9 +57,9 @@ namespace _game.Scripts.UI
             store.name = $"store-{storeData.Id}";
             useButton.style.backgroundImage = gameDataSo.GetStoreImageFromID(storeData.Id);
             storeCount.text = storeData.StoreCount.ToString();
-            progressBar.title = storeData.BaseStoreProfit.ToString("F2") + "$";
+            progressBar.title = storeData.BaseStoreProfit.ToShortFormat() + "$";
             useButton.clicked += () => storeManager.ActivateStore(storeData);
-            storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
+            storeCost.text = storeData.GetStoreCost().ToShortFormat() + "$";
             buyButton.clicked += () => storeManager.BuyStore(storeData);
 
             if(storeData.StoreUnlocked)
@@ -66,7 +71,7 @@ namespace _game.Scripts.UI
         
         private void UpdateBalance(float value)
         {
-            _currentBalance.text = "Balance: " + value.ToString("F2") + "$";
+            _currentBalance.text = "Balance: " + value.ToShortFormat() + "$";
         }
         
         private void UpdateStore(StoreData storeData)
@@ -79,13 +84,13 @@ namespace _game.Scripts.UI
             var manager = store.Q<VisualElement>("store-manager");
             var managerButton = store.Q<Button>("manager-btn");
             var managerName = store.Q<Label>("manager-name");
-            var mnagerPrice = store.Q<Label>("manager-price");
+            var managerPrice = store.Q<Label>("manager-price");
             
             if(storeData.CanBuyManager() && !storeData.ManagerUnlocked)
             {
                 manager.style.display = DisplayStyle.Flex;
                 managerName.text = storeData.ManagerName;
-                mnagerPrice.text = storeData.ManagerCost.ToString("F2") + "$";
+                managerPrice.text = storeData.ManagerCost.ToShortFormat() + "$";
                 managerButton.clicked += () => storeManager.BuyManager(storeData);
             }
             
@@ -94,11 +99,10 @@ namespace _game.Scripts.UI
             
             if(storeData.StoreUnlocked)
                 nextStore.visible = true;
-            //nextStore.visible = true;
-            
+
             storeCount.text = storeData.StoreCount.ToString();
-            storeCost.text = storeData.GetStoreCost().ToString("F2") + "$";
-            progressBar.title = (storeData.BaseStoreProfit * storeData.StoreCount).ToString("F2") + "$";
+            storeCost.text = storeData.GetStoreCost().ToShortFormat() + "$";
+            progressBar.title = (storeData.BaseStoreProfit * storeData.StoreCount).ToShortFormat() + "$";
             
             //StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer));
         }
@@ -137,6 +141,8 @@ namespace _game.Scripts.UI
             if(store.StoreTimer > 0.15f) 
                 progressBar.value = 0;
             storeManager.AddToBalance(store.BaseStoreProfit * store.StoreCount);
+            
+            UpdateStore(store);
             
             if(store.ManagerUnlocked)
                 StartCoroutine(AdvanceProgressBar(progressBar, progressBar.highValue, store.StoreTimer, store));

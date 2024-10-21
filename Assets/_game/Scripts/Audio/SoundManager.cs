@@ -1,10 +1,11 @@
+using System;
 using _D.Scripts.Audio;
 using DG.Tweening;
 using UnityEngine;
+using FMODUnity;
 
 namespace _game.Scripts.Audio
 {
-    [RequireComponent(typeof(AudioSource))]
     public class SoundManager : MonoBehaviour
     {
         public static SoundManager Instance { get; private set; }
@@ -12,10 +13,11 @@ namespace _game.Scripts.Audio
         [SerializeField] private float musicVolume = 1;
         [SerializeField] private float sfxVolume = 1;
         [SerializeField] private float fadeInDuration = 5;
-        [SerializeField] private AudioClip mainMenuMusic;
-        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private FMODEventPlayable mainMenuMusic;
         [Space(10)]
-        [SerializeField] private AudioData buttonClickSound;
+        [SerializeField] private RuntimeManager runtimeManager;
+        [SerializeField] private StudioEventEmitter buttonClickSound;
+        [SerializeField] private StudioEventEmitter musicEmitter;
         
         private Tween _musicFadeTween;
         
@@ -32,19 +34,26 @@ namespace _game.Scripts.Audio
                 return;
             }
             
-            audioSource = GetComponent<AudioSource>();
+            //audioSource = GetComponent<AudioSource>();
         }
-        
+
+        private void Start()
+        {
+            musicEmitter.Play();
+        }
+
         public void PlayButtonClickSound()
         {
-            audioSource.PlayOneShot(buttonClickSound.AudioClip, buttonClickSound.Volume * sfxVolume);
+            if(buttonClickSound == null) return;
+            buttonClickSound.Play();
+            //audioSource.PlayOneShot(buttonClickSound.AudioClip, buttonClickSound.Volume * sfxVolume);
         }
 
         public void SetVolume(float evtNewValue)
         {
             _musicFadeTween?.Kill();
             musicVolume = evtNewValue;
-            audioSource.volume = musicVolume;
+            //audioSource.volume = musicVolume;
         }
     }
 }

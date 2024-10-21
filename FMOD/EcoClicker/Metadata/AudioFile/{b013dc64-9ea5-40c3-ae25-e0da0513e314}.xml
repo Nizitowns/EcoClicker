@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b013dc64-9ea5-40c3-ae25-e0da0513e314}">
+		<property name="assetPath">
+			<value>Main Track - Gabriele Liotta.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>242.94912500000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{858e8c82-471b-4310-bb8b-638fa37cdecd}</destination>
+		</relationship>
+	</object>
+</objects>
