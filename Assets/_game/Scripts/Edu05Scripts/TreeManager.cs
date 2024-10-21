@@ -1,3 +1,6 @@
+using _game.Scripts.GameData;
+using _game.Scripts.Managers;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,7 +13,10 @@ public class TreeManager : MonoBehaviour
 {
     [Tooltip("The actual state of tree")]
     public TreeState treeState = TreeState.Seed;
+    public TreeDataSo treeData;
     [HideInInspector] public Vector3 actualScale;
+
+    [SerializeField] private Grid grid;
 
     public GameObject actualTree;
     public GameObject seed;
@@ -19,13 +25,16 @@ public class TreeManager : MonoBehaviour
 
     [Tooltip("The time to tree grow up in seconds")]
     public float countdownTimer;
+    [Tooltip("The time to tree start have glowing in seconds")]
     public float glowingTimer;
-    public float timer;
+    private float timer;
 
     void Start()
     {
         treeState = TreeState.Seed;
         timer = countdownTimer;
+
+        SetTreeData(treeData);
 
         ChangeTree(seed);
         actualScale = new Vector3(8.0f, 8.0f, 8.0f); //this will be remove in future, is just for all trees have same scale
@@ -101,6 +110,16 @@ public class TreeManager : MonoBehaviour
 
 
         Debug.Log(Manager.deciLevel01.Energy);
+    }
+
+    void SetTreeData(TreeDataSo treeData)
+    {
+        //actualTree = treeData.Seed;
+        seed = treeData.Seed;
+        youngTree = treeData.Young;
+        adultTree = treeData.Adult;
+        countdownTimer = treeData.TimeToGrow;
+        glowingTimer = treeData.TimeToGlow;
     }
 
     void TaskOnClick()

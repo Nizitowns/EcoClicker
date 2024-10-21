@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="Shop" style="flex-grow: 1; background-color: rgba(255, 71, 71, 0.7); width: 350px; height: 100px;">
+        <engine:Button text="Buy seed&#10;" name="BuySeed" style="width: 88px; height: 66px; background-color: rgb(188, 188, 188);" />
+        <engine:Label text="Label" name="TreeName" style="-unity-text-align: upper-left; width: 159px; right: auto; position: relative; top: -70px; left: 112px;" />
+        <engine:Label text="Label" name="Quantity" style="-unity-text-align: upper-left; width: 159px; right: auto; position: relative; top: -60px; left: 112px;" />
+    </engine:VisualElement>
+</engine:UXML>

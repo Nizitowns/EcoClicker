@@ -17,5 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_game/Scenes/Dragoons/GameNewUI.unity
     guid: c5f1d800f04f9fa4cbb3d5caaef799e9
+  - enabled: 1
+    path: Assets/_game/Scenes/edu05/GameNew3D.unity
+    guid: c04b39b3d5b56c34486cfd7bb9d29067
+  - enabled: 1
+    path: Assets/_game/Scenes/edu05/MainMenu 1.unity
+    guid: 066426a790f84244cbdd54073c78a82c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

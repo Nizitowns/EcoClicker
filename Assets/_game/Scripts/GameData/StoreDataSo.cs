@@ -22,4 +22,16 @@ namespace _game.Scripts.GameData
         [field: SerializeField] public bool IsUnlocked { get; private set; }
         [field: SerializeField] public float StoreUnlockedAt { get; private set; }
     }
+
+    [CreateAssetMenu(menuName = "Data/TreeData", fileName = "Tree", order = 1)]
+    public class TreeDataSo : ScriptableObject
+    {
+        [field: SerializeField] public string Id { get; private set; }
+        [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField] public GameObject Seed { get; private set; }
+        [field: SerializeField] public GameObject Young { get; private set; }
+        [field: SerializeField] public GameObject Adult { get; private set; }
+        [field: SerializeField] public float TimeToGrow { get; private set; }
+        [field: SerializeField] public float TimeToGlow { get; private set; }
+    }
 }
