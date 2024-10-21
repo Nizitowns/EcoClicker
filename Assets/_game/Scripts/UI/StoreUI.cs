@@ -13,6 +13,7 @@ namespace _game.Scripts.UI
     public class StoreUI : BaseUI
     {
 
+        [SerializeField] private Texture2D bgImage;
         [SerializeField] private StoreManager storeManager;
         [SerializeField] private GameDataSo gameDataSo;
         [SerializeField] private VisualTreeAsset buttonTemplate;
@@ -23,6 +24,8 @@ namespace _game.Scripts.UI
         {
             base.Awake();
             _currentBalance = container.CreateChild<Label>("store-balance");
+            container.style.backgroundImage = bgImage;
+            container.style.flexGrow = 1;
             
             storeManager.OnStoreCreated += CreateButton;
             storeManager.OnStoreChanged += UpdateStore;

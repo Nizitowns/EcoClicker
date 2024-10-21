@@ -1534,6 +1534,7 @@ MonoBehaviour:
   styleSheets:
   - {fileID: 7433441132597879392, guid: ce64a9a165b97aa45b2a214cc3da0a09, type: 3}
   - {fileID: 7433441132597879392, guid: 67324da880793ab4693a2ef8297c3931, type: 3}
+  bgImage: {fileID: 2800000, guid: 5508f48b98007bf4b810b4f3563d9f02, type: 3}
   storeManager: {fileID: 608345571}
   gameDataSo: {fileID: 11400000, guid: 1aa6386f2b7b4bd4c8f60b7b1081acca, type: 2}
   buttonTemplate: {fileID: 9197481963319205126, guid: baf9f128889c50a4c99b4b385dde8444, type: 3}
@@ -1659,7 +1660,9 @@ MonoBehaviour:
       <Id>k__BackingField: 
       CurrentBalance: 0
       Stores: []
+  saveInterval: 20
   saveName: SaveData
+  gameSceneName: Game
   mainSceneName: Main
 --- !u!1 &1779954136
 GameObject:
