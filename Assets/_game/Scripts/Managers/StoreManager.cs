@@ -85,7 +85,7 @@ namespace _game.Scripts.Managers
                 data.StoreTimer /= 2;
             }
 
-            GridManager.Instance.AddTreeGrid();
+            if(GridManager.Instance != null) GridManager.Instance.AddTreeGrid();
         }
         
         private bool CanBuyStore(StoreData data)
