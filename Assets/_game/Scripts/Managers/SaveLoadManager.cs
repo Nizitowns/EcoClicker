@@ -150,6 +150,8 @@ namespace _game.Scripts.Managers
         public void ReloadGame() => LoadGame(saveData.Name);
         
         public void DeleteSaveGame(string saveFileName) => dataService.Delete(saveFileName);
+        
+        public bool SaveDataExists() => dataService.SaveExists(saveData.Name);
 
         private void OnApplicationQuit()
         {

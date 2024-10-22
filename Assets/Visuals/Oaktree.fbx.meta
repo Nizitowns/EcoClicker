@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: standardSurface1
-    second: {fileID: -3846018093981099296, guid: b08ba611c846234428ac76fdaa689aa0, type: 3}
+    second: {fileID: 2100000, guid: 98d5e0204c4a84a4789d9c6452aa0657, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -21,8 +21,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 

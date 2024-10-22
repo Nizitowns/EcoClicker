@@ -33,10 +33,15 @@ namespace _game.Scripts.UI
             var startGame = _buttonContainer.CreateChild<Button>("start-game-btn", "generic-button");
             startGame.text = "NEW GAME";
             startGame.clickable.clicked += NewGame;
-            
+
             var loadGame = _buttonContainer.CreateChild<Button>("load-game-btn", "generic-button");
             loadGame.text = "LOAD GAME";
             loadGame.clickable.clicked += LoadGame;
+            
+            if (!SaveLoadManager.Instance.SaveDataExists())
+            {
+                loadGame.SetEnabled(false);
+            }
             
             var options = _buttonContainer.CreateChild<Button>("options-btn", "generic-button");
             options.text = "OPTIONS";
